@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h5 class="card-title">Delete Confirmation</h5>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "<strong>{{ obj }}</strong>"?</p>
+            <div class="d-flex justify-content-between">
+                <!-- Go Back Button -->
+                <a href="{% url 'home' %}" class="btn btn-secondary">Go Back</a>
+                <!-- Confirm Delete Button -->
+                <input type="submit" value="Confirm" class="btn btn-danger">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

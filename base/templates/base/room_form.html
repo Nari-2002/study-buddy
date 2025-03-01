@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+        <h4 class="card-title mb-4">Room Creation</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            <!-- Optional: Loop through fields for custom styling -->
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}  <!-- Label for each field -->
+                    {{ field }}  <!-- Field input -->
+                    {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <div class="text-danger">{{ error }}</div>  <!-- Error messages in red -->
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
